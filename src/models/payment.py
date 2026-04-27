@@ -2,7 +2,7 @@ from sqlalchemy import Enum, ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
-from .enums import PaymentMethod, PaymentStatus
+from src.models.enums import PaymentMethod, PaymentStatus
 
 
 class Payment(Base):

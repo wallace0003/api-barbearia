@@ -7,7 +7,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from models import Base
+from src.models.base import Base
 
 
 class Database:
@@ -128,3 +128,11 @@ class Database:
 
     def dispose(self) -> None:
         self.engine.dispose()
+
+if __name__ == "__main__":
+    DATABASE_URL = "postgresql+psycopg2://barber:barber123@localhost:5433/barber_db"
+    database = Database(DATABASE_URL, echo=True)
+    if database.test_connection():
+        print("Conexão com o banco realizada com sucesso!")
+    else:
+        print("Falha ao conectar no banco.")

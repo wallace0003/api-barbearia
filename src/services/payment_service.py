@@ -2,9 +2,9 @@ from fastapi import HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from models.payment import Payment
-from models.scheduling import Scheduling
-from schemas.payment_schema import PaymentCreate, PaymentUpdate
+from src.models.payment import Payment
+from src.models.scheduling import Scheduling
+from src.schemas.payment import PaymentCreate, PaymentUpdate
 
 
 class PaymentService:

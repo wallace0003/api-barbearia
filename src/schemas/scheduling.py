@@ -1,7 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field
 
-from models.enums import SchedulingStatus
+from src.models.enums import SchedulingStatus
 
 
 class SchedulingBase(BaseModel):

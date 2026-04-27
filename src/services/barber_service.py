@@ -2,8 +2,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from models.barber import Barber
-from schemas.barber_schema import BarberCreate, BarberUpdate
+from src.models.barber import Barber
+from src.schemas.barber import BarberCreate, BarberUpdate
 
 
 class BarberService:

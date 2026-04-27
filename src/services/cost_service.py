@@ -1,8 +1,8 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
-from models.cost import Cost
-from schemas.cost_schema import CostCreate, CostUpdate
+from src.models.cost import Cost
+from src.schemas.cost import CostCreate, CostUpdate
 
 
 class CostService:

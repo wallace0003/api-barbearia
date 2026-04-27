@@ -1,11 +1,11 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
-from models.barber import Barber
-from models.client import Client
-from models.scheduling import Scheduling
-from models.service import Service
-from schemas.scheduling_schema import SchedulingCreate, SchedulingUpdate
+from src.models.barber import Barber
+from src.models.client import Client
+from src.models.scheduling import Scheduling
+from src.models.service import Service
+from src.schemas.scheduling import SchedulingCreate, SchedulingUpdate
 
 
 class SchedulingService:

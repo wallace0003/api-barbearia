@@ -2,8 +2,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from models.service import Service
-from schemas.service_schema import ServiceCreate, ServiceUpdate
+from src.models.service import Service
+from src.schemas.service import ServiceCreate, ServiceUpdate
 
 
 class ServiceService:

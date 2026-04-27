@@ -1,6 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 
-from models.enums import PaymentMethod, PaymentStatus
+from src.models.enums import PaymentMethod, PaymentStatus
 
 
 class PaymentBase(BaseModel):

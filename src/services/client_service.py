@@ -2,8 +2,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from models.client import Client
-from schemas.client_schema import ClientCreate, ClientUpdate
+from src.models.client import Client
+from src.schemas.client import ClientCreate, ClientUpdate
 
 
 class ClientService:

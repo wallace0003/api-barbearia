@@ -57,3 +57,8 @@ def get_financial_service(
     session: Session = Depends(get_db_session),
 ) -> SchedulingService:
     return SchedulingService(session)
+
+def get_barber_service(
+    session: Session = Depends(get_db_session),
+) -> BarberService:
+    return BarberService(session)

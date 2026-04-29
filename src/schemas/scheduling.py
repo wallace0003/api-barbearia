@@ -1,6 +1,7 @@
 from datetime import datetime
+from decimal import Decimal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, model_validator
 
 from src.models.enums import SchedulingStatus
 
@@ -39,7 +40,44 @@ class SchedulingUpdate(BaseModel):
         return self
 
 
-class SchedulingResponse(SchedulingBase):
+class SchedulingClientResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id_client: int
+    client_name: str
+    email: str
+    number: str
+
+
+class SchedulingBarberResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id_barber: int
+    barber_name: str
+    email: str
+    number: str
+
+
+class SchedulingServiceResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id_service: int
+    service_name: str
+    price: Decimal
+    duration: int
+
+
+class SchedulingResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id_scheduling: int
+    id_client: int
+    id_barber: int
+    id_service: int
+    start_at: datetime
+    end_at: datetime
+    status: SchedulingStatus
+
+    client: SchedulingClientResponse
+    barber: SchedulingBarberResponse
+    service: SchedulingServiceResponse

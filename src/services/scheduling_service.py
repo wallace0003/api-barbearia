@@ -1,6 +1,5 @@
 from fastapi import HTTPException, status
-from sqlalchemy.orm import Session
-
+from sqlalchemy.orm import Session, joinedload
 from src.models.barber import Barber
 from src.models.client import Client
 from src.models.scheduling import Scheduling
@@ -77,7 +76,16 @@ class SchedulingService:
         return scheduling
 
     def get_scheduling_by_id(self, id_scheduling: int) -> Scheduling:
-        scheduling = self.session.get(Scheduling, id_scheduling)
+        scheduling = (
+            self.session.query(Scheduling)
+            .options(
+                joinedload(Scheduling.client),
+                joinedload(Scheduling.barber),
+                joinedload(Scheduling.service),
+            )
+            .filter(Scheduling.id_scheduling == id_scheduling)
+            .first()
+        )
 
         if not scheduling:
             raise HTTPException(
@@ -87,8 +95,17 @@ class SchedulingService:
 
         return scheduling
 
+
     def list_schedulings(self) -> list[Scheduling]:
-        return self.session.query(Scheduling).all()
+        return (
+            self.session.query(Scheduling)
+            .options(
+                joinedload(Scheduling.client),
+                joinedload(Scheduling.barber),
+                joinedload(Scheduling.service),
+            )
+            .all()
+        )
 
     def update_scheduling(
         self,

@@ -24,7 +24,7 @@ class ServiceService:
             self.session.rollback()
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail="Já existe um serviço com este nome.",
+                detail="Já existe um serviço com esse nome.",
             )
 
     def get_service_by_id(self, id_service: int) -> Service:
@@ -58,7 +58,7 @@ class ServiceService:
             self.session.rollback()
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail="Já existe um serviço com este nome.",
+                detail="Já existe um serviço com esse nome.",
             )
 
     def delete_service(self, id_service: int) -> None:
@@ -66,4 +66,3 @@ class ServiceService:
 
         self.session.delete(service)
         self.session.commit()
-    

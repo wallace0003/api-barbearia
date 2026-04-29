@@ -1,8 +1,6 @@
 from decimal import Decimal
-
 from sqlalchemy import Boolean, Integer, Numeric, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from .base import Base
 
 

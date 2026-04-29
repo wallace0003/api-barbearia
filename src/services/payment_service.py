@@ -3,7 +3,6 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from src.models.payment import Payment
-from src.models.scheduling import Scheduling
 from src.schemas.payment import PaymentCreate, PaymentUpdate
 
 
@@ -12,14 +11,6 @@ class PaymentService:
         self.session = session
 
     def create_payment(self, payment_data: PaymentCreate) -> Payment:
-        scheduling = self.session.get(Scheduling, payment_data.id_scheduling)
-
-        if not scheduling:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Agendamento não encontrado.",
-            )
-
         try:
             payment = Payment(**payment_data.model_dump())
 
@@ -33,7 +24,7 @@ class PaymentService:
             self.session.rollback()
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail="Este agendamento já possui um pagamento.",
+                detail="Pagamento já existe para este agendamento.",
             )
 
     def get_payment_by_id(self, id_payment: int) -> Payment:
@@ -68,3 +59,4 @@ class PaymentService:
 
         self.session.delete(payment)
         self.session.commit()
+    

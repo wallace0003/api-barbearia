@@ -29,22 +29,10 @@ def get_client_service(
     return ClientService(session)
 
 
-def get_employee_service(
-    session: Session = Depends(get_db_session),
-) -> BarberService:
-    return BarberService(session)
-
-
 def get_service_service(
     session: Session = Depends(get_db_session),
 ) -> ServiceService:
     return ServiceService(session)
-
-
-def get_appointment_service(
-    session: Session = Depends(get_db_session),
-) -> CostService:
-    return CostService(session)
 
 
 def get_payment_service(
@@ -62,3 +50,9 @@ def get_barber_service(
     session: Session = Depends(get_db_session),
 ) -> BarberService:
     return BarberService(session)
+
+
+def get_cost_service(
+    session: Session = Depends(get_db_session),
+) -> CostService:
+    return CostService(session)

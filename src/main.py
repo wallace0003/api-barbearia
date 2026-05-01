@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI(
-    title="Onboarding and IAM",
+    title="La Boina Barbearia",
     version="0.0.1",
 )
 

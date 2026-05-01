@@ -5,6 +5,7 @@ from src.api.v1.cost import router as cost_router
 from src.api.v1.payment import router as payment_router
 from src.api.v1.service import router as service_router
 from src.api.v1.scheduling import router as scheduling_router
+from src.api.v1.financial_report import router as financial_report_router
 
 
 api_router = APIRouter()
@@ -43,4 +44,10 @@ api_router.include_router(
     scheduling_router,
     prefix="/schedulings",
     tags=["Schedulings"]
+)
+
+api_router.include_router(
+    financial_report_router,
+    prefix="/financial",
+    tags=["Financial Report"]
 )

@@ -11,6 +11,7 @@ from src.services.service_service import ServiceService
 from src.services.payment_service import PaymentService
 from src.services.cost_service import CostService
 from src.services.scheduling_service import SchedulingService
+from src.services.financial_report_service import FinancialReportService
 
 
 DATABASE_URL = "postgresql+psycopg2://barber:barber123@localhost:5433/barber_db"
@@ -55,3 +56,8 @@ def get_scheduling_service(
 ) -> SchedulingService:
     return SchedulingService(session)
 
+
+def get_financial_report_service(
+    session: Session = Depends(get_db_session),
+) -> FinancialReportService:
+    return FinancialReportService(session)
